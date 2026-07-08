@@ -152,15 +152,6 @@
 
 </div>
 
- </div>
-    <div class="menu">
-        <a href="{{ route('admin.dashboard') }}"><i class="fa-solid fa-house"></i> Dashboard</a>
-        <a href="{{ route('admin.laporan.index') }}" class="active"><i class="fa-solid fa-file-lines"></i> Laporan Masuk</a>
-       <a href="{{ route('admin.investigasi.index') }}"><i class="fa-solid fa-folder-open"></i> Hasil Investigasi</a>
-       <a href="{{ route('admin.cetak') }}"><i class="fa-solid fa-print"></i> <span>Cetak Laporan</span></a>
-        <a href="{{ route('logout') }}"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
-    </div>
-
 <div class="card">
 
     <form method="GET">
@@ -293,15 +284,15 @@
     <th>Tanggal Lapor</th>
 </tr>
 
-@foreach($laporans as $i => $l)
+        @foreach($laporans as $i => $l)
 <tr>
-    <td class="center">{{$i+1}}</td>
-    <td>{{$l->kode_laporan}}</td>
-    <td>{{$l->jenis_kasus}}</td>
-    <td>{{$l->lokasi}}</td>
-    <td>{{$l->waktu_kejadian}}</td>
-    <td>{{$l->status}}</td>
-    <td>{{$l->created_at->format('d-m-Y')}}</td>
+    <td class="center">{{ $i+1 }}</td>
+    <td>{{ $l->kode_laporan }}</td>
+    <td>{{ $l->jenis_kasus }}</td>
+    <td>{{ $l->lokasi }}</td>
+    <td>{{ $l->waktu_kejadian }}</td>
+    <td>{{ $l->status }}</td>
+    <td>{{ $l->created_at->format('d-m-Y') }}</td>
 </tr>
 @endforeach
 
