@@ -20,27 +20,193 @@
         .menu a:hover, .menu a.active{ background:linear-gradient(135deg,#2563eb,#3b82f6); color:white; }
 
         /* MAIN */
-        .main{ margin-left:280px; padding:30px; }
-        .header{ display:flex; justify-content:space-between; align-items:center; padding:25px 30px; border-radius:25px; background:rgba(255,255,255,.05); backdrop-filter:blur(15px); border:1px solid rgba(255,255,255,.08); margin-bottom:30px; }
-        .stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:20px; margin-bottom:30px; }
-        .stat{ background:rgba(255,255,255,.04); backdrop-filter:blur(15px); border:1px solid rgba(255,255,255,.06); padding:22px; border-radius:20px; }
-        .stat p{ color:#94a3b8; margin-bottom:10px; }
-        .stat h1{ font-size:35px; }
-        .stat-total h1{ color:#3b82f6; } .stat-wait h1{ color:#fbbf24; } .stat-success h1{ color:#34d399; } .stat-reject h1{ color:#f87171; }
-        .search-box{ background:rgba(255,255,255,.04); padding:20px; border-radius:22px; margin-bottom:30px; display:flex; gap:15px; }
-        input, select{ padding:14px 20px; border-radius:14px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); color:white; flex:1; }
-        option{ color:black; }
-        .table-card{ background:rgba(255,255,255,.05); border-radius:30px; padding:30px; }
+        .main{
+    margin-left:280px;
+    padding:30px;
+    min-height:100vh;
+    background:#f1f5f9;
+}
+        .header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 30px;
+    border-radius:25px;
+    background:#ffffff;
+    border:1px solid #e2e8f0;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    margin-bottom:30px;
+}
+
+.header h1{
+    color:#0f172a;
+    font-size:32px;
+    font-weight:700;
+}
+
+.header p{
+    margin-top:5px;
+    color:#64748b;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-bottom:30px;
+}
+        .stat{
+    background:#ffffff;
+    border:1px solid #e2e8f0;
+    padding:22px;
+    border-radius:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,.05);
+    transition:.3s;
+}
+
+.stat:hover{
+    transform:translateY(-5px);
+}
+
+.stat p{
+    color:#64748b;
+    margin-bottom:10px;
+    font-size:14px;
+}
+
+.stat h1{
+    font-size:35px;
+    font-weight:700;
+}
+
+/* Warna angka statistik */
+.stat-total h1{
+    color:#2563eb;
+}
+
+.stat-wait h1{
+    color:#d97706;
+}
+
+.stat-success h1{
+    color:#16a34a;
+}
+
+.stat-reject h1{
+    color:#dc2626;
+}
+.search-box{
+    background:#ffffff;
+    border:1px solid #e2e8f0;
+    box-shadow:0 8px 20px rgba(0,0,0,.05);
+    padding:20px;
+    border-radius:22px;
+    margin-bottom:30px;
+    display:flex;
+    gap:15px;
+}
+      input,
+select{
+    flex:1;
+    padding:14px 20px;
+    border-radius:14px;
+    background:#1e2b57;
+    border:1px solid #334155;
+    color:#ffffff;
+    outline:none;
+}
+
+input::placeholder{
+    color:#cbd5e1;
+}
+
+input:focus,
+select:focus{
+    border-color:#60a5fa;
+    box-shadow:0 0 0 3px rgba(96,165,250,.2);
+}
+
+option{
+    background:#ffffff;
+    color:#1e293b;
+}
+       .table-card{
+    background:#ffffff;
+    border:1px solid #e2e8f0;
+    border-radius:30px;
+    padding:30px;
+    box-shadow:0 8px 20px rgba(0,0,0,.05);
+}
         table{ width:100%; border-collapse:collapse; }
-        th{ background:rgba(37,99,235,.15); color:#60a5fa; padding:18px; text-align:left; }
-        td{ padding:18px; border-bottom:1px solid rgba(255,255,255,.08); }
-        .badge{ padding:7px 15px; border-radius:20px; font-size:12px; font-weight:bold; }
-        .badge-menunggu{ background:rgba(245,158,11,.15); color:#fbbf24; }
-        .badge-setuju{ background:rgba(16,185,129,.15); color:#34d399; }
-        .badge-tolak{ background:rgba(239,68,68,.15); color:#f87171; }
-        .actions{ display:flex; gap:10px; }
-        .btn{ padding:10px 15px; border-radius:12px; color:white; text-decoration:none; font-size:13px; }
-        .btn-blue{ background:#2563eb; }
+        th{
+    background:#dbeafe;
+    color:#1d4ed8;
+    padding:18px;
+    text-align:left;
+}
+
+td{
+    padding:18px;
+    color:#1e293b;
+    border-bottom:1px solid #e2e8f0;
+}
+
+tr:hover{
+    background:#f8fafc;
+}
+        .badge{
+    padding:8px 16px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:600;
+}
+
+.badge-menunggu{
+    background:#fef3c7;
+    color:#b45309;
+    border:1px solid #fcd34d;
+}
+
+.badge-setuju{
+    background:#dcfce7;
+    color:#15803d;
+    border:1px solid #86efac;
+}
+
+.badge-tolak{
+    background:#fee2e2;
+    color:#b91c1c;
+    border:1px solid #fca5a5;
+}
+       .actions{
+    display:flex;
+    gap:10px;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:10px 16px;
+    border-radius:12px;
+    color:#fff;
+    text-decoration:none;
+    font-size:13px;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 6px 15px rgba(0,0,0,.15);
+}
+
+.btn-blue{
+    background:#2563eb;
+}
+
+.btn-blue:hover{
+    background:#1d4ed8;
+}
         @media(max-width:768px){ .sidebar{ left:-280px; } .main{ margin-left:0; } .stats{ grid-template-columns:1fr; } }
     </style>
 </head>
