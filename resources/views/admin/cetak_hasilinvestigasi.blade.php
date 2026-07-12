@@ -126,25 +126,36 @@
 
 @else
 
-    <h3>DETAIL HASIL INVESTIGASI</h3>
+<h3>DETAIL HASIL INVESTIGASI</h3>
 
-    <table>
-        @foreach($laporans as $i => $l)
-        <tr>
-            <td class="center">{{ $i+1 }}</td>
-            <td>{{ $l->kode_laporan }}</td>
-            <td>{{ $l->jenis_kasus }}</td>
-            <td>{{ $l->investigasi->nama_pemeriksa ?? '-' }}</td>
-            <td>{{ $l->investigasi->tingkat_risiko ?? '-' }}</td>
-            <td>{{ $l->investigasi->status_investigasi ?? '-' }}</td>
-            <td>
-                {{ $l->investigasi?->tanggal_investigasi
-                    ? \Carbon\Carbon::parse($l->investigasi->tanggal_investigasi)->format('d-m-Y')
-                    : '-' }}
-            </td>
-        </tr>
-        @endforeach
-    </table>
+<table>
+<tr>
+    <th>No</th>
+    <th>Kode</th>
+    <th>Jenis Kasus</th>
+    <th>Nama Pemeriksa</th>
+    <th>Tingkat Risiko</th>
+    <th>Status Investigasi</th>
+    <th>Tanggal Investigasi</th>
+</tr>
+
+@foreach($laporans as $i => $l)
+<tr>
+    <td>{{ $i+1 }}</td>
+    <td>{{ $l->kode_laporan }}</td>
+    <td>{{ $l->jenis_kasus }}</td>
+    <td>{{ $l->investigasi->nama_pemeriksa ?? '-' }}</td>
+    <td>{{ $l->investigasi->tingkat_risiko ?? '-' }}</td>
+    <td>{{ $l->investigasi->status_investigasi ?? '-' }}</td>
+    <td>
+        {{ $l->investigasi?->tanggal_investigasi
+            ? \Carbon\Carbon::parse($l->investigasi->tanggal_investigasi)->format('d-m-Y')
+            : '-' }}
+    </td>
+</tr>
+@endforeach
+
+</table>
 
 @endif
 </div>

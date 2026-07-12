@@ -235,46 +235,10 @@
 
 @if($jenisRekap == 'laporan')
 
-<div class="card">
+<h3>DETAIL DATA LAPORAN</h3>
 
-    <h3>RINGKASAN LAPORAN</h3>
-
-    <table>
-        <tr>
-            <td width="300">Total Laporan</td>
-            <td>{{ $laporans->count() }}</td>
-        </tr>
-
-        <tr>
-            <td>Laporan Menunggu</td>
-            <td>{{ $laporans->where('status','Menunggu')->count() }}</td>
-        </tr>
-
-        <tr>
-            <td>Laporan Diproses</td>
-            <td>{{ $laporans->where('status','Diproses')->count() }}</td>
-        </tr>
-
-        <tr>
-            <td>Laporan Selesai</td>
-            <td>{{ $laporans->where('status','Selesai')->count() }}</td>
-        </tr>
-
-        <tr>
-            <td>Laporan Ditolak</td>
-            <td>{{ $laporans->where('status','Ditolak')->count() }}</td>
-        </tr>
-    </table>
-
-</div>
-
-<div class="card">
-
-    <h3>DETAIL DATA LAPORAN</h3>
-
-    <table>
-
-        <tr>
+<table>
+<tr>
     <th>No</th>
     <th>Kode</th>
     <th>Jenis Kasus</th>
@@ -284,9 +248,9 @@
     <th>Tanggal Lapor</th>
 </tr>
 
-        @foreach($laporans as $i => $l)
+@foreach($laporans as $i => $l)
 <tr>
-    <td class="center">{{ $i+1 }}</td>
+    <td>{{ $i+1 }}</td>
     <td>{{ $l->kode_laporan }}</td>
     <td>{{ $l->jenis_kasus }}</td>
     <td>{{ $l->lokasi }}</td>
@@ -296,7 +260,7 @@
 </tr>
 @endforeach
 
-    </table>
+</table>
 
     <div class="footer">
         TOTAL LAPORAN : {{ $laporans->count() }}
