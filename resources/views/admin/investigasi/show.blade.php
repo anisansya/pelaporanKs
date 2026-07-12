@@ -465,7 +465,7 @@ $laporan->investigasi->status_investigasi != 'Disetujui Admin')
 <form action="{{ route('admin.investigasi.setujui',$laporan->id) }}" method="POST">
     @csrf
     <button class="btn btn-success">
-        Setujui Investigasi
+        setujui investigasi & kirim ke pelapor
     </button>
 </form>
 

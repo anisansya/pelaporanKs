@@ -24,29 +24,26 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        body {
-            min-height: 100vh;
-            background: radial-gradient(circle at top left, #0b1e4f, #020617);
-            color: white;
-            display: flex;
-            position: relative;
-            overflow-x: hidden;
-        }
+        body{
+    min-height:100vh;
+    background:#f8fafc;
+    color:#1e293b;
+    display:flex;
+    position:relative;
+    overflow-x:hidden;
+}
 
         /* BACKGROUND DECORATION GRID */
-        body::before {
-            content: "";
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background-image: linear-gradient(rgba(255, 255, 255, 0.01) 1px, transparent 1px), 
-                              linear-gradient(90deg, rgba(255, 255, 255, 0.01) 1px, transparent 1px);
-            background-size: 40px 40px;
-            z-index: -1;
-            pointer-events: none;
-        }
+        body::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+        linear-gradient(rgba(15,23,42,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15,23,42,.03) 1px, transparent 1px);
+    background-size:40px 40px;
+    z-index:-1;
+}
 
         /* SIDEBAR SYSTEM */
         .sidebar {
@@ -130,17 +127,15 @@
         }
 
         /* MAIN DASHBOARD CARD */
-        .card {
-            width: 100%;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--border-glass);
-            border-radius: 24px;
-            padding: 35px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            position: relative;
-        }
+        .card{
+    width:100%;
+    background:#ffffff;
+    border:1px solid #e2e8f0;
+    border-radius:24px;
+    padding:35px;
+    box-shadow:0 8px 25px rgba(15,23,42,.08);
+    position:relative;
+}
 
         .card::before {
             content: '';
@@ -153,60 +148,62 @@
             border-radius: 24px 24px 0 0;
         }
 
-        h1 {
-            font-size: 26px;
-            font-weight: 700;
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: linear-gradient(to right, #fff, #93c5fd);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+       h1{
+    font-size:26px;
+    font-weight:700;
+    margin-bottom:30px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:#1e293b;
+
+    background:none;
+    -webkit-background-clip:unset;
+    -webkit-text-fill-color:unset;
+}
 
         /* RESPONSIVE TABLE SYSTEM */
-        .table-responsive {
-            width: 100%;
-            overflow-x: auto;
-            border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            background: rgba(255, 255, 255, 0.01);
-        }
+        .table-responsive{
+    width:100%;
+    overflow-x:auto;
+    border-radius:14px;
+    border:1px solid #e2e8f0;
+    background:#ffffff;
+}
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-            font-size: 14px;
-        }
+table{
+    width:100%;
+    border-collapse:collapse;
+    text-align:left;
+    font-size:14px;
+}
 
-        th {
-            background: rgba(37, 99, 235, 0.1);
-            color: #93c5fd;
-            padding: 16px 20px;
-            font-weight: 600;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.08);
-            text-transform: uppercase;
-            font-size: 12px;
-            letter-spacing: 0.5px;
-        }
+th{
+    background:#eff6ff;
+    color:#2563eb;
+    padding:16px 20px;
+    font-weight:600;
+    border-bottom:2px solid #dbeafe;
+    text-transform:uppercase;
+    font-size:12px;
+    letter-spacing:.5px;
+}
 
-        td {
-            padding: 16px 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-            color: #cbd5e1;
-            vertical-align: middle;
-        }
+td{
+    padding:16px 20px;
+    border-bottom:1px solid #e2e8f0;
+    color:#334155;
+    vertical-align:middle;
+}
 
-        tr:last-child td {
-            border-bottom: none;
-        }
+tr:last-child td{
+    border-bottom:none;
+}
 
-        tr:hover td {
-            background: rgba(255, 255, 255, 0.01);
-            color: #fff;
-        }
+tr:hover td{
+    background:#f8fafc;
+    color:#1e293b;
+}
 
         .code-badge {
             font-family: monospace;
@@ -217,19 +214,44 @@
             border-radius: 6px;
             border: 1px solid rgba(56, 189, 248, 0.15);
         }
-
+        .case-type{
+    font-weight:600;
+    color:#1e293b;
+}
         /* STATUS BADGES */
-        .badge {
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            display: inline-block;
-        }
-        .badge-proses { background: rgba(245, 158, 11, 0.12); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.2); }
-        .badge-selesai { background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.2); }
-        .badge-tolak { background: rgba(239, 68, 68, 0.12); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.2); }
+        .badge{
+    padding:6px 12px;
+    border-radius:8px;
+    font-size:11px;
+    font-weight:600;
+    text-transform:uppercase;
+    display:inline-block;
+}
+
+/* Diproses */
+.badge-proses{
+    background:#fef3c7;
+    color:#b45309;
+    border:1px solid #fcd34d;
+}
+
+/* Selesai */
+.badge-selesai{
+    background:#dcfce7;
+    color:#15803d;
+    border:1px solid #86efac;
+}
+
+/* Ditolak */
+.badge-tolak{
+    background:#fee2e2;
+    color:#b91c1c;
+    border:1px solid #fca5a5;
+}
+.badge{
+    font-weight:700;
+    letter-spacing:.3px;
+}
 
         /* ACTION BUTTON */
         .btn {
@@ -348,9 +370,9 @@
                             <span class="code-badge">{{ $l->kode_laporan }}</span>
                         </td>
                         
-                        <td style="font-weight: 500; color: #f1f5f9;">
-                            {{ $l->jenis_kasus }}
-                        </td>
+                        <td style="font-weight:600; color:#1e293b;">
+    {{ $l->jenis_kasus }}
+</td>
 
                         <td>
                             {{ $l->created_at ? $l->created_at->format('d M Y H:i') : '-' }} WIB

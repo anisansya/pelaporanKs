@@ -169,18 +169,24 @@
                 </td>
             </tr>
             <tr>
-    <td class="label">Bukti Pendukung</td>
-    <td>
-        @if($laporan->bukti)
-            @foreach($laporan->bukti as $file)
-                <a href="{{ asset('storage/'.$file) }}" target="_blank">
-                    Lihat Bukti
-                </a><br>
-            @endforeach
-        @else
-            Tidak ada bukti
-        @endif
-    </td>
+   <td class="label">Bukti Pendukung</td>
+<td>
+    @php
+        $files = is_array($laporan->bukti)
+            ? $laporan->bukti
+            : json_decode($laporan->bukti, true);
+    @endphp
+
+    @if($files)
+        @foreach($files as $file)
+            <a href="{{ asset('storage/'.$file) }}" target="_blank">
+                Lihat Bukti
+            </a><br>
+        @endforeach
+    @else
+        Tidak ada bukti
+    @endif
+</td>
 </tr>
             <tr><td class="label">Status Penanganan</td><td>{{ $laporan->status }}</td></tr>
             <tr><td class="label">Catatan Admin</td><td>{{ $laporan->investigasi->catatan_admin ?? '-' }}</td></tr>

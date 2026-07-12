@@ -8,59 +8,75 @@ use App\Models\Investigasi;
 
 class SatgasController extends Controller
 {
-    public function index()
-    {
-        $laporans = Laporan::where(function ($query) {
+   public function index()
+{
+    $laporans = Laporan::where(function ($query) {
 
-                $query->where('dikirim_satgas', 1)
-                      ->orWhere('status', 'Diproses')
-                      ->orWhere('status', 'Selesai');
+            $query->where('dikirim_satgas', 1)
+                  ->orWhere('status', 'Diproses')
+                  ->orWhere('status', 'Selesai');
 
-            })
-            ->with('investigasi')
-            ->latest()
-            ->get();
-
-
-        $laporanTeratas = Laporan::where('status', 'Diproses')
-            ->with('investigasi')
-            ->latest()
-            ->take(5)
-            ->get();
+        })
+        ->with('investigasi')
+        ->latest()
+        ->get();
 
 
-        $count = [
-
-            'semua' => $laporans->count(),
-
-            'Menunggu' => $laporans
-                ->where('status', 'Menunggu')
-                ->count(),
-
-            'Diproses' => $laporans
-                ->where('status', 'Diproses')
-                ->count(),
-
-            'Selesai' => $laporans
-                ->where('status', 'Selesai')
-                ->count(),
-
-            'Ditolak' => $laporans
-                ->where('status', 'Ditolak')
-                ->count(),
-
-        ];
+    $laporanTeratas = Laporan::where('status', 'Diproses')
+        ->with('investigasi')
+        ->latest()
+        ->take(5)
+        ->get();
 
 
-        return view(
-            'satgas.dashboard',
-            compact(
-                'laporans',
-                'laporanTeratas',
-                'count'
-            )
-        );
-    }
+    /*
+    |--------------------------------------------------------------------------
+    | NOTIFIKASI SATGAS
+    |--------------------------------------------------------------------------
+    | Menampilkan laporan yang baru dikirim admin ke satgas
+    | tetapi belum pernah dibuat investigasinya.
+    */
+
+    $notifications = Laporan::where('dikirim_satgas', 1)
+        ->whereDoesntHave('investigasi')
+        ->latest()
+        ->take(5)
+        ->get();
+
+    $notifCount = $notifications->count();
+
+
+    $count = [
+
+        'semua' => $laporans->count(),
+
+        'Menunggu' => $laporans
+            ->where('status', 'Menunggu')
+            ->count(),
+
+        'Diproses' => $laporans
+            ->where('status', 'Diproses')
+            ->count(),
+
+        'Selesai' => $laporans
+            ->where('status', 'Selesai')
+            ->count(),
+
+        'Ditolak' => $laporans
+            ->where('status', 'Ditolak')
+            ->count(),
+
+    ];
+
+
+    return view('satgas.dashboard', compact(
+        'laporans',
+        'laporanTeratas',
+        'count',
+        'notifications',
+        'notifCount'
+    ));
+}
 
 
 

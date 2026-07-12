@@ -133,20 +133,18 @@
                 </td>
             </tr>
 
-            <tr>
-                <td class="label">Bukti Pendukung</td>
-                <td>
-                 @if($laporan->bukti)
-    @foreach($laporan->bukti as $file)
-        <a href="{{ asset('storage/'.$file) }}" target="_blank">
-            Lihat Bukti
-        </a><br>
-    @endforeach
-@else
-    Tidak ada bukti.
-@endif
-                </td>
-            </tr>
+           <tr>
+    <td class="label">Bukti Pendukung</td>
+    <td>
+        @if($laporan->bukti)
+            <a href="{{ asset('storage/'.$laporan->bukti) }}" target="_blank">
+                Lihat Bukti
+            </a>
+        @else
+            Tidak ada bukti.
+        @endif
+    </td>
+</tr>
 
             <tr><td class="label">Status Saat Ini</td><td><span class="status">{{ $laporan->status }}</span></td></tr>
         </table>
@@ -165,20 +163,39 @@
                         </select>
                     </td>
                 </tr>
-                <tr>
-                    <td class="label">Catatan Admin</td>
-                    <td><textarea name="catatan" placeholder="Tuliskan catatan untuk satgas...">{{ $laporan->catatan ?? '' }}</textarea></td>
-                </tr>
             </table>
 
             <div class="btn-area">
-                <button type="submit" class="btn save"><i class="fa-solid fa-paper-plane"></i> Kirim ke Satgas</button>
-                <a href="{{ route('admin.laporan.index') }}" class="btn back">Kembali</a>
-            </div>
-        </form>
 
-        <div class="footer-form">- Satgas Pencegahan Anti Kekerasan Seksual Politeknik Negeri Bengkalis -</div>
-    </div>
+<button
+type="submit"
+name="aksi"
+value="satgas"
+class="btn save">
+
+<i class="fa-solid fa-share"></i>
+Teruskan ke Satgas
+
+</button>
+
+<button
+type="submit"
+name="aksi"
+value="pelapor"
+class="btn reject">
+
+<i class="fa-solid fa-reply"></i>
+Kembalikan ke Pelapor
+
+</button>
+
+<a href="{{ route('admin.laporan.index') }}"
+class="btn back">
+
+Kembali
+
+</a>
+
 </div>
 
 </body>

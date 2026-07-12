@@ -19,10 +19,8 @@
 }
 
 body{
-    background:
-    radial-gradient(circle at top left,#0b1e4f,transparent 40%),
-    linear-gradient(135deg,#020617,#041c4d,#020617);
-    color:white;
+    background:#f1f5f9;
+    color:#1e293b;
     overflow-x:hidden;
 }
 
@@ -187,36 +185,125 @@ body{
 
 
 .topbar h1{
-
     font-size:28px;
-    color:white;
-
+    color:#1e293b;
 }
 
-
 .topbar p{
-
-    color:#94a3b8;
-
+    color:#64748b;
 }
 
 
 
 .user-box{
-
     display:flex;
     align-items:center;
     gap:12px;
-
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.08);
-
+    background:#ffffff;
+    border:1px solid #e2e8f0;
     padding:12px 18px;
     border-radius:18px;
-
+    box-shadow:0 5px 15px rgba(0,0,0,.05);
 }
 
+.notif-wrapper{
+    position:relative;
+}
 
+.notif-btn{
+    width:48px;
+    height:48px;
+    border:none;
+    border-radius:50%;
+    background:#ffffff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    color:#2563eb;
+    font-size:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    transition:.25s;
+}
+
+.notif-btn:hover{
+    background:#2563eb;
+    color:#ffffff;
+}
+
+.notif-badge{
+    position:absolute;
+    top:-5px;
+    right:-5px;
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    background:#ef4444;
+    color:#ffffff;
+    font-size:11px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border:2px solid #ffffff;
+}
+
+.notif-dropdown{
+    display:none;
+    position:absolute;
+    right:0;
+    top:60px;
+    width:340px;
+    background:#ffffff;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
+    z-index:9999;
+}
+
+.notif-dropdown.show{
+    display:block;
+}
+
+.notif-title{
+    padding:15px;
+    font-weight:700;
+    color:#1e293b;
+    border-bottom:1px solid #e2e8f0;
+}
+
+.notif-item{
+    display:block;
+    padding:15px;
+    text-decoration:none;
+    color:#334155;
+    border-bottom:1px solid #f1f5f9;
+    transition:.2s;
+}
+
+.notif-item:hover{
+    background:#f8fafc;
+}
+
+.notif-empty{
+    padding:35px 20px;
+    text-align:center;
+    color:#64748b;
+}
+
+.notif-footer{
+    display:block;
+    text-align:center;
+    text-decoration:none;
+    padding:12px;
+    font-weight:600;
+    color:#2563eb;
+    background:#f8fafc;
+}
+
+.notif-footer:hover{
+    background:#eff6ff;
+}
 
 .avatar{
 
@@ -247,57 +334,63 @@ body{
 
 
 .card{
-
     padding:25px;
     border-radius:22px;
-
     display:flex;
     justify-content:space-between;
     align-items:center;
 
-    background:rgba(255,255,255,.04);
+    background:#ffffff;
+    border:1px solid #e2e8f0;
 
-    border:1px solid rgba(255,255,255,.08);
-
-    backdrop-filter:blur(20px);
-
-    box-shadow:0 20px 40px rgba(0,0,0,.3);
-
+    box-shadow:0 8px 25px rgba(15,23,42,.08);
 }
-
-
 
 .card-value{
-
     font-size:38px;
     font-weight:700;
-
 }
-
 
 .card-label{
-
-    color:#cbd5e1;
-
+    color:#64748b;
 }
 
-
-
 .card-icon{
-
     width:50px;
     height:50px;
-
     border-radius:15px;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
-    background:rgba(255,255,255,.08);
-
 }
- 
+.card{
+    transition:transform .2s ease;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+}
+
+/* Warna angka */
+.text-blue{
+    color:#2563eb;
+}
+
+.text-orange{
+    color:#f59e0b;
+}
+
+.text-green{
+    color:#10b981;
+}
+
+.text-red{
+    color:#ef4444;
+}
+
+.text-purple{
+    color:#7c3aed;
+}
 /* STATUS CARD */
 
 .t-tunggu{
@@ -340,19 +433,17 @@ body{
 
 
 .panel-box{
-
-    background:rgba(255,255,255,.03);
-
-    backdrop-filter:blur(20px);
-
-    border:1px solid rgba(255,255,255,.08);
-
+    background:#ffffff;
+    border:1px solid #e2e8f0;
     border-radius:22px;
-
     padding:25px;
+    box-shadow:0 8px 25px rgba(15,23,42,.08);
+    transition:.3s ease;
+}
 
-    box-shadow:0 20px 40px rgba(0,0,0,.3);
-
+.panel-box:hover{
+    transform:translateY(-3px);
+    box-shadow:0 15px 35px rgba(15,23,42,.12);
 }
 
 
@@ -374,25 +465,16 @@ body{
 
 
 .panel-title{
-
     font-size:18px;
     font-weight:700;
-
-    color:white;
-
+    color:#1e293b;
     margin-bottom:20px;
-
-    border-bottom:1px solid rgba(255,255,255,.08);
-
+    border-bottom:1px solid #e2e8f0;
     padding-bottom:12px;
-
 }
 
-
 .panel-title span{
-
-    color:#94a3b8;
-
+    color:#64748b;
 }
 
 
@@ -411,35 +493,20 @@ table{
 
 
 th{
-
     padding:14px;
-
     text-align:left;
-
-    color:#93c5fd;
-
-    background:rgba(37,99,235,.12);
-
+    color:#2563eb;
+    background:#eff6ff;
 }
-
-
 
 td{
-
     padding:14px;
-
-    color:#cbd5e1;
-
-    border-bottom:1px solid rgba(255,255,255,.06);
-
+    color:#334155;
+    border-bottom:1px solid #e2e8f0;
 }
 
-
-
 tr:hover td{
-
-    background:rgba(255,255,255,.03);
-
+    background:#f8fafc;
 }
 
 
@@ -518,13 +585,9 @@ tr:hover td{
 
 
 .footer{
-
     margin-top:40px;
-
     text-align:center;
-
     color:#64748b;
-
 }
 
 
@@ -613,18 +676,102 @@ tr:hover td{
         
         <!-- TOPBAR -->
         <div class="topbar">
-            <div>
-                <h1>Halo, {{ explode(' ', auth()->user()->name)[0] }}</h1>
-                <p>Berikut adalah rangkuman beban kerja investigasi Anda hari ini.</p>
+    <div>
+        <h1>Halo, {{ explode(' ', auth()->user()->name)[0] }}</h1>
+        <p>Berikut adalah rangkuman beban kerja investigasi Anda hari ini.</p>
+    </div>
+
+    <div style="display:flex;align-items:center;gap:18px;">
+
+        <div class="notif-wrapper">
+
+    <button class="notif-btn" id="notifBtn">
+
+        <i class="fa-solid fa-bell"></i>
+
+        @if($notifCount > 0)
+            <span class="notif-badge">
+                {{ $notifCount }}
+            </span>
+        @endif
+
+    </button>
+
+    <div class="notif-dropdown" id="notifDropdown">
+
+        <div class="notif-title">
+            🔔 Notifikasi Satgas
+        </div>
+
+        @forelse($notifications as $notif)
+
+            <a href="{{ route('satgas.show',$notif->id) }}"
+               class="notif-item">
+
+                <strong>{{ $notif->kode_laporan }}</strong>
+
+                <br>
+
+                <small>
+                    Admin mengirim laporan baru untuk diinvestigasi.
+                </small>
+
+                <br>
+
+                <small style="color:#94a3b8;">
+
+                    {{
+                        $notif->created_at->isToday()
+                        ? 'Hari ini'
+                        : (
+                            $notif->created_at->isYesterday()
+                            ? 'Kemarin'
+                            : $notif->created_at->format('d M Y')
+                        )
+                    }}
+
+                </small>
+
+            </a>
+
+        @empty
+
+            <div class="notif-empty">
+                <i class="fa-regular fa-bell-slash"></i>
+                <br>
+                Belum ada notifikasi.
             </div>
-            <div class="user-box">
-                <div class="avatar"><i class="fa-solid fa-user-shield"></i></div>
-                <div>
-                    <h4 style="font-size:14px; color:#1e3a8a;">{{ auth()->user()->name }}</h4>
-                    <small style="color:#4b5563; font-weight: 500;">Tim Satgas</small>
-                </div>
+
+        @endforelse
+
+        <a href="{{ route('satgas.laporan') }}"
+           class="notif-footer">
+
+            Lihat Semua Laporan →
+
+        </a>
+
+    </div>
+
+</div>
+
+        <div class="user-box">
+            <div class="avatar">
+                <i class="fa-solid fa-user-shield"></i>
+            </div>
+
+            <div>
+                <h4 style="font-size:14px;color:#1e3a8a;">
+                    {{ auth()->user()->name }}
+                </h4>
+                <small style="color:#4b5563;font-weight:500;">
+                    Tim Satgas
+                </small>
             </div>
         </div>
+
+    </div>
+</div>
 
         <!-- STATS (Setiap balok diwarnai secara solid sesuai fungsionalitasnya) -->
         <div class="stats-grid">
@@ -731,30 +878,56 @@ tr:hover td{
     </div>
 
     <!-- CHART SCRIPT -->
-    <script>
-        const ctx = document.getElementById('satgasPieChart').getContext('2d');
-        new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Menunggu', 'Investigasi', 'Selesai'],
-                datasets: [{
-                    data: [{{ $count['Menunggu'] }}, {{ $count['Diproses'] }}, {{ $count['Selesai'] }}],
-                    backgroundColor: ['#d97706', '#2563eb', '#059669'],
-                    borderWidth: 0
-                }]
-            },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                cutout: '80%',
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: { color: '#374151', boxWidth: 12, padding: 20, font: { weight: '600' } }
+   <script>
+    const ctx = document.getElementById('satgasPieChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Menunggu', 'Investigasi', 'Selesai'],
+            datasets: [{
+                data: [
+                    {{ $count['Menunggu'] }},
+                    {{ $count['Diproses'] }},
+                    {{ $count['Selesai'] }}
+                ],
+                backgroundColor: ['#d97706', '#2563eb', '#059669'],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '80%',
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        color: '#374151',
+                        boxWidth: 12,
+                        padding: 20,
+                        font: {
+                            weight: '600'
+                        }
                     }
                 }
             }
-        });
-    </script>
+        }
+    });
+</script>
+
+<script>
+    const notifBtn = document.getElementById("notifBtn");
+    const notifDropdown = document.getElementById("notifDropdown");
+
+    notifBtn.addEventListener("click", function(e){
+        e.stopPropagation();
+        notifDropdown.classList.toggle("show");
+    });
+
+    document.addEventListener("click", function(){
+        notifDropdown.classList.remove("show");
+    });
+</script>
+
 </body>
 </html>

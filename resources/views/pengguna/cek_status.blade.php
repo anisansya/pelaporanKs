@@ -772,15 +772,33 @@ max-width:100%;
             </div>
 
             <div class="item">
-                <span class="label"><i class="fa-solid fa-paperclip"></i> Bukti Pendukung</span>
-                @if($laporan->bukti)
-                    <a href="{{ asset('storage/' . $laporan->bukti) }}" target="_blank" class="btn-bukti">
-                        <i class="fa-solid fa-file-arrow-down"></i> Lihat/Unduh Berkas Bukti
-                    </a>
-                @else
-                    <span style="color: #475569; font-style: italic;">Tidak ada bukti yang diunggah</span>
-                @endif
-            </div>
+    <span class="label">
+        <i class="fa-solid fa-paperclip"></i> Bukti Pendukung
+    </span>
+
+    @if($laporan->bukti && count($laporan->bukti) > 0)
+
+        @foreach($laporan->bukti as $file)
+
+            <a href="{{ asset('storage/'.$file) }}"
+               target="_blank"
+               class="btn-bukti">
+
+                <i class="fa-solid fa-file-arrow-down"></i>
+                Lihat Bukti {{ $loop->iteration }}
+
+            </a><br><br>
+
+        @endforeach
+
+    @else
+
+        <span style="color:#475569;font-style:italic;">
+            Tidak ada bukti yang diunggah.
+        </span>
+
+    @endif
+</div>
 
             <div style="margin-top: 20px;">
                 <span class="label" style="margin-bottom: 8px;"><i class="fa-solid fa-align-left"></i> Kronologi Kejadian yang Dilaporkan:</span>
@@ -788,7 +806,23 @@ max-width:100%;
                     {{ $laporan->deskripsi ?? 'Pelapor tidak menyertakan deskripsi kronologi tambahan.' }}
                 </div>
             </div>
+@if($laporan->status == 'Ditolak' && $laporan->catatan)
 
+<div style="margin-top:20px;">
+    <span class="label" style="margin-bottom:8px;color:#dc2626;">
+        <i class="fa-solid fa-circle-exclamation"></i>
+        Alasan Laporan Ditolak
+    </span>
+
+    <div class="text-block"
+         style="background:#fef2f2;
+                border-left:4px solid #dc2626;
+                color:#991b1b;">
+        {{ $laporan->catatan }}
+    </div>
+</div>
+
+@endif
             @if($laporan->investigasi?->catatan_admin)
                 <div style="margin-top: 20px;">
                     <span class="label" style="margin-bottom: 8px; color: #fbbf24;"><i class="fa-solid fa-comment-dots"></i> Catatan Khusus dari Admin:</span>
