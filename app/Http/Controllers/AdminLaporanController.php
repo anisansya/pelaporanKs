@@ -45,26 +45,42 @@ class AdminLaporanController extends Controller
     }
 
     public function verifikasi(Request $request, $id)
-    {
-        $request->validate([
-            'status'  => 'required|in:Menunggu,Diproses,Selesai,Ditolak',
-            'catatan' => 'nullable|string',
-        ]);
+{
+    $request->validate([
+        'status' => 'required|in:Menunggu,Diproses,Selesai,Ditolak',
+    ]);
 
-        $laporan = Laporan::findOrFail($id);
+    $laporan = Laporan::findOrFail($id);
+
+    // Jika tombol "Teruskan ke Satgas"
+    if ($request->aksi == 'satgas') {
 
         $laporan->update([
-            'status' => $request->status,
-            'catatan' => $request->catatan,
-            'dikirim_satgas' => $request->has('kirim_satgas')
-                ? 1
-                : $laporan->dikirim_satgas,
+            'status' => 'Diproses',
+            'dikirim_satgas' => 1,
         ]);
 
         return redirect()
             ->route('admin.laporan.index')
-            ->with('success', 'Laporan berhasil diperbarui');
+            ->with('success', 'Laporan berhasil dikirim ke Satgas.');
     }
+
+    // Jika tombol "Kembalikan ke Pelapor"
+    if ($request->aksi == 'pelapor') {
+
+        $laporan->update([
+            'status' => 'Ditolak',
+            'dikirim_satgas' => 0,
+        ]);
+
+        return redirect()
+            ->route('admin.laporan.index')
+            ->with('success', 'Laporan dikembalikan ke pelapor.');
+    }
+
+    return redirect()
+        ->route('admin.laporan.index');
+}
 
     /*
     |--------------------------------------------------------------------------
